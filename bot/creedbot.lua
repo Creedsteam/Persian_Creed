@@ -222,6 +222,8 @@ function create_config( )
     "block",
     "tagall",
     "text",
+    "info",
+    "bot_on_off",
     "welcome",
     "webshot",
     "google",
