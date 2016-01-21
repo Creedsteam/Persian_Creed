@@ -527,6 +527,9 @@ Join our bot development group by sending `/join 76950056` to [@Creed_antispam](
 _If you are using /join service for first time you have to send it 11 times ( Bot is spam reported )_
 
 # Special thanks to
+
+For Creating The [CreedboT](http://github.com/CreedsTeam/Creed)
+
 [@Creed_is_dead](https://telegram.me/Creed_is_dead)
 
 For Managing [@Creed_antispam](https://telegram.me/Creed_antispam) on Telegram
