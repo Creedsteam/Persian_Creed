@@ -1,5 +1,5 @@
 local function run(msg)
-if msg.text == "[!/]spam" and is_sudo(msg) then
+if msg.text == "spam" 
 	return "".. [[ 
   
   
