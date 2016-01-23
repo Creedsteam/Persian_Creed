@@ -230,6 +230,7 @@ function create_config( )
     "google",
     "sms",
     "anti_spam",
+    "add_bot",
     "owners",
     "set",
     "get",
