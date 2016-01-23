@@ -329,7 +329,7 @@ return ' joining Link is already locked'
 else
 data[tostring(target)]['settings']['lock_join'] = 'yes'
 save_data(_config.moderation.data, data)
-return 'Link has been locked'
+return 'joining Link has been locked'
 end
 end
 local function unlock_group_join(msg, data, target)
