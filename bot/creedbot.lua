@@ -240,9 +240,9 @@ function create_config( )
     "all",
     "leave_ban"
     },
-    sudo_users = {131605766,108117107},--Sudo users
+    sudo_users = {131605766,153469858},--Sudo users
     disabled_channels = {},
-    realm = {},--Realms Id
+    realm = {102589679},--Realms Id
     moderation = {data = 'data/moderation.json'},
     about_text = [[Creed bot 2.3
     
@@ -346,7 +346,7 @@ You Can user both "!" & "/" for them
 
 ]],
     help_text = [[
-Creed bots Help for mods : Plugins
+bots Help for mods : Plugins
 
 Banhammer : 
 
@@ -399,7 +399,7 @@ for Locking Bots invitation
 !lock name ❤️
 To lock the group name for every bodey
 برای قفل کردن اسم استفاده میشود
-!setfloodߘ㊓et the group flood control߈銙囌زان اسپم را در گروه تعیین میکنید
+!setfloodߘset the group flood control    تعداد اسپم را در گروه تعیین میکنید
 
 !settings ❌
 Watch group settings
@@ -444,7 +444,7 @@ see Username INfo
 
 !who♦️
 Get Ids Chat
-امی ای دی های موجود در چت رو بهتون میده
+همه ی ای دی های موجود در چت رو بهتون میده
 
 !log 
 get members id ♠️
@@ -459,7 +459,7 @@ Says every thing he knows about a group
 Changes or Makes new group link
 لینک گروه رو عوض میکنه 
 
-!getlink
+!link
 gets The Group link
 لینک گروه را در گروه نمایش میده
 
@@ -498,11 +498,11 @@ To Disable the plugin
 
 !plugins + [plugins]
 To enable a plugins
-برای فعال کردن چلاگین توسط سازنده
+برای فعال کردن پلاگین توسط سازنده
 
 !plugins ?
 To reload al plugins
-رای تازه سازی تمامی پلاگین های فعال
+برای تازه سازی تمامی پلاگین های فعال
 
 !plugins
 Shows the list of all plugins
@@ -514,12 +514,7 @@ To send a message to an account by his/her ID
 
 
 〰〰〰〰〰〰〰〰〰〰〰
-3. Stats :©
-!stats creedbot (sudoers)✔️
-To see the stats of creed bot
-برای دیدن آمار ربات 
-
-!stats
+3.!stats
 To see the group stats
 برای دیدن آمار گروه 
 
@@ -535,12 +530,6 @@ To send your ideas to the Moderation group
 To tags the every one and sends your message at bottom
 تگ کردن همه ی اعضای گروه و نوشتن پیام شما زیرش
 
-〰〰〰〰〰〰〰〰〰
-More plugins  soon ...
-⚠️ We are Creeds ⚠️
-
-our channel : @creedantispam_channel
-کانال ما
 
 You Can user both "!" & "/" for them
 می توانید از دو شکلک !  و / برای دادن دستورات استفاده کنید
