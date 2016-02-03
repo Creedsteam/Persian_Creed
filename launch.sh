@@ -84,7 +84,7 @@ install() {
   if [ $RET -ne 0 ]; then
     autoconf -i
   fi
-  ./configure && make
+  ./configure
 
   RET=$?; if [ $RET -ne 0 ]; then
     echo "Error. Exiting."; exit $RET;
@@ -111,5 +111,5 @@ else
     exit 1
   fi
 
-  ./tg/bin/telegram-cli -k ./tg/tg-server.pub -s ./bot/creedbot.lua -l 1 -E $@
+  ./tg/bin/telegram-cli -k ./tg/tg-server.pub -s ./bot/creed.lua -l 1 -E $@
 fi
