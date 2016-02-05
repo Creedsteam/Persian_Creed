@@ -211,6 +211,11 @@ local function show_group_settingsmod(msg, data, target)
         lock_adds = data[tostring(msg.to.id)]['settings']['lock_adds']
         end
 
+  local lock_chat= "no"
+    if data[tostring(msg.to.id)]['settings']['lock_chat'] then
+        lock_chat = data[tostring(msg.to.id)]['settings']['lock_chat']
+        end
+
           local lock_eng = "no"
     if data[tostring(msg.to.id)]['settings']['lock_eng'] then
         lock_eng = data[tostring(msg.to.id)]['settings']['lock_eng']
@@ -226,6 +231,11 @@ local function show_group_settingsmod(msg, data, target)
         lock_tag = data[tostring(msg.to.id)]['settings']['lock_tag']
         end
 
+        local lock_join = "no"
+    if data[tostring(msg.to.id)]['settings']['lock_join'] then
+        lock_join = data[tostring(msg.to.id)]['settings']['lock_join']
+        end
+
   local lock_leave = "no"
     if data[tostring(msg.to.id)]['settings']['lock_leave'] then
         lock_leave = data[tostring(msg.to.id)]['settings']['lock_leave']
@@ -235,7 +245,7 @@ local lock_sticker = "no"
         lock_tag = data[tostring(msg.to.id)]['settings']['sticker']
         end
          local settings = data[tostring(target)]['settings']
-  local text = "Group settings:\nLock group name : "..settings.lock_name.."\nLock group photo : "..settings.lock_photo.."\nLock group tag : "..lock_tag.."\nLock group member : "..settings.lock_member.."\nLock group english 🗣 : "..lock_eng.."\n Lock group leave : "..lock_leave.."\nLock group bad words : "..lock_badw.."\nLock group links : "..lock_link.."\nLock group join : "..lock_adds.."\nLock group sticker : "..lock_sticker.."\nflood sensitivity : "..NUM_MSG_MAX.."\nBot protection : "..bots_protection--"\nPublic: "..public
+  local text = "Group settings:\nLock group chat : "..settings.lock_chat.."\nLock group name : "..settings.lock_name.."\nLock group photo : "..settings.lock_photo.."\nLock group tag : "..lock_tag.."\nLock group member : "..settings.lock_member.."\nLock group english 🗣 : "..lock_eng.."\n Lock group leave : "..lock_leave.."\nLock group bad words : "..lock_badw.."\nLock group links : "..lock_link.."\nLock group join : "..lock_adds.."\nLock group sticker : "..lock_sticker.."\nflood sensitivity : "..NUM_MSG_MAX.."\nBot protection : "..bots_protection--"\nPublic: "..public
   return text
 end
 
@@ -290,21 +300,12 @@ local function lock_group_link(msg, data, target)
   if not is_momod(msg) then
     return "For moderators only!"
   end
-  local group_link_lock = data[tostring(target)]['settings']['lock_link']
-  if group_link_lock == 'yes' then
-    return 'link is already locked!'
-  else
-    data[tostring(target)]['settings']['lock_link'] = 'yes'
-    save_data(_config.moderation.data, data)
-    return 'link has been locked!'
-  end
-end
 local function lock_group_sticker(msg, data, target)
   if not is_momod(msg) then
     return "For moderators only!"
   end
   local group_sticker_lock = data[tostring(target)]['settings']['sticker']
-  if group_sticker_lock == 'kick' then
+  if group_sticker_lock == 'yes' then
     return 'Sticker protection is already enabled!'
   else
     data[tostring(target)]['settings']['sticker'] = 'kick'
@@ -326,7 +327,59 @@ local function unlock_group_sticker(msg, data, target)
     return 'Sticker protection has been disabled!'
   end
 end
+local function unlock_group_chat(msg, data, target)
+  if not is_momod(msg) then
+    return "For moderators only!"
+  end
+  local group_chat_lock = data[tostring(target)]['settings']['lock_chat']
+  if group_chat_lock == 'no' then
+    return 'chat is already unlocked!'
+  else
+    data[tostring(target)]['settings']['lock_chat'] = 'no'
+    save_data(_config.moderation.data, data)
+    return 'chat has been unlocked!'
+  end
+end
+local function lock_group_chat(msg, data, target)
+  if not is_momod(msg) then
+    return "For moderators only!"
+  end
+  local group_chat_lock = data[tostring(target)]['settings']['lock_chat]
+  if group_chat_lock == 'yes' then
+    return 'chat is already locked!'
+  else
+    data[tostring(target)]['settings']['lock_chat'] = 'yes'
+    save_data(_config.moderation.data, data)
+    return 'chat has been locked!'
+  end
+end
 
+local function unlock_group_chat(msg, data, target)
+  if not is_momod(msg) then
+    return "For moderators only!"
+  end
+  local group_chat_lock = data[tostring(target)]['settings']['lock_chat']
+  if group_chat_lock == 'no' then
+    return 'chat is already unlocked!'
+  else
+    data[tostring(target)]['settings']['lock_chat'] = 'no'
+    save_data(_config.moderation.data, data)
+    return 'chat has been unlocked!'
+  end
+end
+local function lock_group_link(msg, data, target)
+  if not is_momod(msg) then
+    return "For moderators only!"
+  end
+  local group_link_lock = data[tostring(target)]['settings']['lock_link']
+  if group_link_lock == 'yes' then
+    return 'link is already locked!'
+  else
+    data[tostring(target)]['settings']['lock_link'] = 'yes'
+    save_data(_config.moderation.data, data)
+    return 'link has been locked!'
+  end
+end
 local function unlock_group_link(msg, data, target)
   if not is_momod(msg) then
     return "For moderators only!"
@@ -340,29 +393,15 @@ local function unlock_group_link(msg, data, target)
     return 'link has been unlocked!'
   end
 end
-local function lock_group_link(msg, data, target)
-  if not is_momod(msg) then
-    return "For moderators only!"
-  end
-  local group_link_lock = data[tostring(target)]['settings']['antilink']
-  if group_link_lock == 'yes' then
-    return 'link is already locked!'
-  else
-    data[tostring(target)]['settings']['antilink'] = 'yes'
-    save_data(_config.moderation.data, data)
-    return 'link has been locked!'
-  end
-end
-
 local function unlock_group_link(msg, data, target)
   if not is_momod(msg) then
     return "For moderators only!"
   end
-  local group_link_lock = data[tostring(target)]['settings']['antilink']
+  local group_link_lock = data[tostring(target)]['settings']['lock_link']
   if group_link_lock == 'no' then
     return 'link is already unlocked!'
   else
-    data[tostring(target)]['settings']['antilink'] = 'no'
+    data[tostring(target)]['settings']['lock_link'] = 'no'
     save_data(_config.moderation.data, data)
     return 'link has been unlocked!'
   end
@@ -530,34 +569,6 @@ local function unlock_group_badw(msg, data, target)
     data[tostring(target)]['settings']['lock_badw'] = 'no'
     save_data(_config.moderation.data, data)
     return 'bad words has been unlocked!'
-  end
-end
-
-local function lock_group_adds(msg, data, target)
-  if not is_momod(msg) then
-    return "For moderators only!"
-  end
-  local adds_ban = data[tostring(msg.to.id)]['settings']['adds_ban']
-  if adds_ban == 'yes' then
-    return 'join by link has been locked!'
-  else
-    data[tostring(msg.to.id)]['settings']['adds_ban'] = 'yes'
-    save_data(_config.moderation.data, data)
-  end
-  return 'join by link is already locked!'
-end
-
-local function unlock_group_adds(msg, data, target)
-  if not is_momod(msg) then
-    return "For moderators only!"
-  end
-  local adds_ban = data[tostring(msg.to.id)]['settings']['adds_ban']
-  if adds_ban == 'no' then
-    return 'join by link hes been unlocked!'
-  else
-    data[tostring(msg.to.id)]['settings']['adds_ban'] = 'no'
-    save_data(_config.moderation.data, data)
-    return 'join by link is already unlocked!'
   end
 end
 
@@ -1284,7 +1295,7 @@ local function run(msg, matches)
         return lock_group_arabic(msg, data, target)
       end
           if matches[2] == 'adds' then
-        savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked link ")
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked Commercial Breaks and Invite link ")
         return lock_group_link(msg, data, target)
       end
           if matches[2] == 'eng' then
@@ -1299,9 +1310,13 @@ local function run(msg, matches)
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked badw ")
         return lock_group_badw(msg, data, target)
       end
+      if matches[2] == 'chat' then
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked chat ")
+        return lock_group_chat(msg, data, target)
+      end
          if matches[2] == 'join' or matches[2] == 'j' then
-       savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked adds ")
-       return lock_group_adds(msg, data, target)
+       savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked joining by link ")
+       return lock_group_join(msg, data, target)
      end
          if matches[2] == 'leave' then
        savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked leaving ")
@@ -1339,7 +1354,7 @@ local function run(msg, matches)
         return unlock_group_arabic(msg, data, target)
       end
           if matches[2] == 'adds' then
-        savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked link ")
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked Commercial Breaks and invite link ")
         return unlock_group_link(msg, data, target)
       end
           if matches[2] == 'eng' then
@@ -1350,12 +1365,16 @@ local function run(msg, matches)
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked tag ")
         return unlock_group_tag(msg, data, target)
       end
+      if matches[2] == 'chat' then
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked chat ")
+        return unlock_group_chat(msg, data, target)
+      end
          if matches[2] == 'badw' then
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked badw ")
         return unlock_group_badw(msg, data, target)
       end
         if matches[2] == 'join' or matches[2] == 'j' then
-       savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked adds ")
+       savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked Join by link ")
        return unlock_group_adds(msg, data, target)
      end
          if matches[2] == 'leave' then
