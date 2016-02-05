@@ -412,6 +412,23 @@ You can set someone to the group owner‼️
 catch Group mods
 لیست مدیران گروه را میگیرید
 
+!lock adds 
+to lock commercial Breaks and Other group links in group
+از دادن لینک گروه یا سایت یا هرچیز دیگه توی گروه جلوگیری میکند .
+
+!lock eng
+You cannot speak english in group
+از حرف زدن انگلیسی توی گروه جلوگیری میکند
+
+!lock settings
+To lock settings of group and unchange able
+برای قفل کردن تنظیمات گروه به کار میره
+
+!lock badw
+To lock using badwords in group
+برای جلوگیری از استفاده کردن حرف های رکیک استفاده میشود
+
+
 !lock join 
 to lock joining the group by link
 برای جلوگیری از وارد شدن به کروه با لینک
@@ -484,24 +501,6 @@ to add a Global admin to the bot
 !removeadmin [username]
 to remove an admin from global admins
 برای صلب ادمینی از ادمینای اصلی
-
-
-!plugins - [plugins]
-To Disable the plugin
-برای غیر فعال کردن پلاگین توسط سازنده
-
-
-!plugins + [plugins]
-To enable a plugins
-برای فعال کردن پلاگین توسط سازنده
-
-!plugins ?
-To reload al plugins
-برای تازه سازی تمامی پلاگین های فعال
-
-!plugins
-Shows the list of all plugins
-لیست تمامی پلاگین هارو نشون میده
 
 !sms [id] (text)
 To send a message to an account by his/her ID
