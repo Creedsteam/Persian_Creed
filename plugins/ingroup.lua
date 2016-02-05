@@ -226,6 +226,11 @@ local function show_group_settingsmod(msg, data, target)
         lock_tag = data[tostring(msg.to.id)]['settings']['lock_tag']
         end
 
+        local lock_link = "no"
+    if data[tostring(msg.to.id)]['settings']['lock_link'] then
+        lock_tag = data[tostring(msg.to.id)]['settings']['lock_link']
+        end
+
   local lock_leave = "no"
     if data[tostring(msg.to.id)]['settings']['lock_leave'] then
         lock_leave = data[tostring(msg.to.id)]['settings']['lock_leave']
@@ -235,7 +240,7 @@ local lock_sticker = "no"
         lock_tag = data[tostring(msg.to.id)]['settings']['sticker']
         end
          local settings = data[tostring(target)]['settings']
-  local text = "Group settings:\nLock group name : "..settings.lock_name.."\nLock group photo : "..settings.lock_photo.."\nLock group tag : "..lock_tag.."\nLock group member : "..settings.lock_member.."\nLock group english 🗣 : "..lock_eng.."\n Lock group leave : "..lock_leave.."\nLock group bad words : "..lock_badw.."\nLock group links : "..lock_link.."\nLock group join : "..lock_adds.."\nLock group sticker : "..lock_sticker.."\nflood sensitivity : "..NUM_MSG_MAX.."\nBot protection : "..bots_protection--"\nPublic: "..public
+  local text = "Group settings:\nLock group link : "..settings.lock_link.."\nLock group name : "..settings.lock_name.."\nLock group photo : "..settings.lock_photo.."\nLock group tag : "..lock_tag.."\nLock group member : "..settings.lock_member.."\nLock group english 🗣 : "..lock_eng.."\n Lock group leave : "..lock_leave.."\nLock group bad words : "..lock_badw.."\nLock group links : "..lock_link.."\nLock group join : "..lock_adds.."\nLock group sticker : "..lock_sticker.."\nflood sensitivity : "..NUM_MSG_MAX.."\nBot protection : "..bots_protection--"\nPublic: "..public
   return text
 end
 
@@ -1284,12 +1289,16 @@ local function run(msg, matches)
         return lock_group_arabic(msg, data, target)
       end
           if matches[2] == 'adds' then
-        savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked link ")
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked Commercial Links ")
         return lock_group_link(msg, data, target)
       end
           if matches[2] == 'eng' then
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked eng ")
         return lock_group_eng(msg, data, target)
+      end
+          if matches[2] == 'link' then
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked link ")
+        return lock_group_link(msg, data, target)
       end
           if matches[2] == 'tag' then
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked tag ")
@@ -1339,12 +1348,16 @@ local function run(msg, matches)
         return unlock_group_arabic(msg, data, target)
       end
           if matches[2] == 'adds' then
-        savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked link ")
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked Commersial links ")
         return unlock_group_link(msg, data, target)
       end
           if matches[2] == 'eng' then
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked eng ")
         return unlock_group_eng(msg, data, target)
+      end
+        if matches[2] == 'link' then
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked link ")
+        return unlock_group_link(msg, data, target)
       end
           if matches[2] == 'tag' then
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked tag ")
