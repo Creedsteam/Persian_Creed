@@ -4,12 +4,12 @@ local function run(msg, matches)
    local action = msg.action.type 
     if data[tostring(msg.to.id)] then
       if data[tostring(msg.to.id)]['settings'] then
-        if data[tostring(msg.to.id)]['settings']['leave_ban'] then 
-          leave_ban = data[tostring(msg.to.id)]['settings']['leave_ban']
+        if data[tostring(msg.to.id)]['settings']['adds_ban'] then 
+          leave_ban = data[tostring(msg.to.id)]['settings']['adds_ban']
         end
       end
     end
-   if action == 'chat_del_user' and not is_momod2(msg.action.user.id) and leave_ban == 'yes' then
+   if action == 'chat_del_user' and not is_momod2(msg.action.user.id) and adds_ban == 'yes' then
      	local user_id = msg.action.user.id
      	local chat_id = msg.to.id
      	ban_user(user_id, chat_id)
@@ -20,7 +20,13 @@ local function run(msg, matches)
 
 return {
   patterns = {
-    "^!!tgservice (.*)$"
+"[Hh][Tt][Tt][Pp][Ss]://[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]/[Jj][Oo][Ii][Nn][Cc][Hh][Aa][Tt]/",
+"[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]/[Jj][Oo][Ii][Nn][Cc][Hh][Aa][Tt]/",
+".[Ii][Rr]",
+".[Cc][Oo][Mm]",
+"[Hh][Tt][Tt][Pp]://",
+"[Ww][Ww][Ww]:",
+
   },
   run = run
 }
