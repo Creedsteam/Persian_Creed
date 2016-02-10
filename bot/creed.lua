@@ -298,11 +298,11 @@ Get group type
 در مورد نقش گروه بگیرید
 
 !kill chat [GroupID]
-Kick all memebers and delete group ⛔️⛔️
-⛔️تمامی اعضای گروه را حذف میکند ⛔️
+Kick all memebers and delete group 
+️تمامی اعضای گروه را حذف میکند 
 
 !kill realm [RealmID]
-Kick all members and delete realm⛔️⛔️
+Kick all members and delete realm
 تمامی اعضای گروه مارد را حذف میکند
 
 !addadmin [id|username]
@@ -311,8 +311,8 @@ Promote an admin by id OR username *Sudo only
 
 
 !removeadmin [id|username]
-Demote an admin by id OR username *Sudo only❗️❗️
-❗️❗️ادمینی را با این دستور صلب مقام میکنید ❗️❗️
+Demote an admin by id OR username *Sudo only
+️ادمینی را با این دستور صلب مقام میکنید 
 
 !list groups
 Get a list of all groups
@@ -391,12 +391,14 @@ for Locking Bots invitation
 برای جلوگیری از ادد کردن ربا استفاده میشود
 
 
-!lock name ❤️
+!lock name
 To lock the group name for every bodey
 برای قفل کردن اسم استفاده میشود
-!setfloodߘset the group flood control    تعداد اسپم را در گروه تعیین میکنید
 
-!settings ❌
+!setflood set the group flood control  
+تعداد اسپم را در گروه تعیین میکنید
+
+!settings
 Watch group settings
 تنظیمات فعلی گروه را میبینید
 
@@ -404,7 +406,7 @@ Watch group settings
 watch group owner
 آیدی سازنده گروه رو میبینید
 
-!setowner user_id❗️
+!setowner user_id
 You can set someone to the group owner‼️
 برای گروه سازنده تعیین میکنید 
 
@@ -434,11 +436,11 @@ to lock joining the group by link
 برای جلوگیری از وارد شدن به کروه با لینک
 
 
-!lock flood⚠️
+!lock flood
 lock group flood
 از اسپم دادن در گروه جلوگیری کنید
 
-!unlock (bots-member-flood-photo-name-tag-link-join-Arabic)✅
+!unlock (bots-member-flood-photo-name-tag-link-join-Arabic)
 Unlock Something
 موارد بالا را با این دستور آزاد میسازید
 
@@ -454,12 +456,12 @@ watch about group or set about
 see Username INfo
 در مورد اسم و ای دی شخص بهتون میده 
 
-!who♦️
+!who
 Get Ids Chat
 همه ی ای دی های موجود در چت رو بهتون میده
 
 !log 
-get members id ♠️
+get members id
 تمامی فعالیت های انجام یافته توسط شما و یا مدیران رو نشون میده
 
 !all
@@ -479,7 +481,8 @@ gets The Group link
 sends the group link to the PV
 برای دریافت لینک در پیوی استفاده میشه 
 〰〰〰〰〰〰〰〰
-Admins :®
+Admins :
+
 !add
 to add the group as knows
 برای مجوز دادن به ربات برای استفاده در گروه
@@ -489,7 +492,7 @@ to add the group as knows
 to remove the group and be unknown
 برای ناشناس کردن گروه برای ربات توسط مدیران اصلی
 
-!setgpowner (Gpid) user_id ⚫️
+!setgpowner (Gpid) user_id
 For Set a Owner of group from realm
  برای تعیین سازنده ای برای گروه  از گروه مادر
 
@@ -513,13 +516,13 @@ To see the group stats
 برای دیدن آمار گروه 
 
 〰〰〰〰〰〰〰〰
-4. Feedback⚫️
+4. Feedback
 !feedback (text)
 To send your ideas to the Moderation group
 برای فرستادن انتقادات و پیشنهادات و حرف خود با مدیر ها استفاده میشه
 
 〰〰〰〰〰〰〰〰〰〰〰
-5. Tagall◻️
+5. Tagall
 !tagall (text)
 To tags the every one and sends your message at bottom
 تگ کردن همه ی اعضای گروه و نوشتن پیام شما زیرش
