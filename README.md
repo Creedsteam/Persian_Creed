@@ -530,15 +530,13 @@ _If you are using /join service for first time you have to send it 11 times ( Bo
 
 For Creating The [CreedboT](http://github.com/CreedsTeam/Creed)
 
-[@Creed_is_dead](https://telegram.me/Creed_is_dead)
+[@Creed_is_dead](https://telegram.me/Arsalan_sahel)
 
 For Managing [@Creed_antispam](https://telegram.me/Creed_antispam) on Telegram
 
-[@Aria_Creed](https://telegram.me/Aria_Creed)
+[@Aria_Creed](https://telegram.me/Creed_aria)
 
 [@Amircc_Creed](https://telegram.me/Amircc_Creed)
-
-[@ArashInfernal](https://telegram.me/ArashInfernal)
 
 For graphic designs
 
