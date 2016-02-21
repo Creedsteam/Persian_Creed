@@ -226,7 +226,7 @@ local function show_group_settingsmod(msg, data, target)
         lock_tag = data[tostring(msg.to.id)]['settings']['lock_tag']
         end
 
-        local lock_tchat = "no"
+        local lock_chat = "no"
     if data[tostring(msg.to.id)]['settings']['lock_chat'] then
         lock_chat = data[tostring(msg.to.id)]['settings']['lock_chat']
         end
