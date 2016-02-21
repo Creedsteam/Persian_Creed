@@ -538,7 +538,35 @@ local function lock_group_chat(msg, data, target)
   if not is_owner(msg) then
     return "Only admins can do it for now"
   end
-  local group_chat_lock = data[tostring(target)]['settings']['lock_chat']
+   local group_join_lock = data[tostring(target)]['settings']['lock_join']
+  if group_join_lock == 'yes' then
+    return 'Join by link is locked'
+  else
+    data[tostring(target)]['settings']['lock_join'] = 'yes'
+    save_data(_config.moderation.data, data)
+    return 'Join by link has been locked'
+  end
+end
+
+local function unlock_group_join(msg, data, target)
+  if not is_owner(msg) then
+    return "Only admins can do it for now"
+  end
+  local group_join_lock = data[tostring(target)]['settings']['lock_join']
+  if group_join_lock == 'no' then
+    return 'Join by link is not locked'
+  else
+    data[tostring(target)]['settings']['lock_join'] = 'no'
+    save_data(_config.moderation.data, data)
+    return 'Join by link has been unlocked'
+  end
+end
+
+local function lock_group_chat(msg, data, target)
+  if not is_momod(msg) then
+    return "For moderators only!"
+  end
+    local group_chat_lock = data[tostring(target)]['settings']['lock_chat']
   if group_chat_lock == 'yes' then
     return 'Group chat is locked'
   else
