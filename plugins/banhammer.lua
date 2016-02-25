@@ -9,7 +9,7 @@ local function pre_process(msg)
       print('درحال بررسی شخص اینوایت شده '..user_id)
       local banned = is_banned(user_id, msg.to.id)
       if banned or is_gbanned(user_id) then -- Check it with redis
-      print('اربر بن شده است')
+      print('کاربر بن شده است')
       local name = user_print_name(msg.from)
       savelog(msg.to.id, name.." ["..msg.from.id.."] این شخص بن بود پس حذف شد ! ")-- Save to logs
       kick_user(user_id, msg.to.id)
@@ -91,7 +91,7 @@ local function kick_ban_res(extra, success, result)
       local from_id = extra.from_id
       local get_cmd = extra.get_cmd
       local receiver = "chat#id"..chat_id
-       if get_cmd == "اخراج" then
+       if get_cmd == "kick" then
          if member_id == from_id then
              return send_large_msg(receiver, "شما نمیتوانید خودتان را حذف کنید")
          end
@@ -99,21 +99,21 @@ local function kick_ban_res(extra, success, result)
             return send_large_msg(receiver, "شما اجازه حذف کردن مدیران و سازنده ها را ندارید")
          end
          return kick_user(member_id, chat_id)
-      elseif get_cmd == 'مسدود' then
+      elseif get_cmd == 'ban' then
         if is_momod2(member_id, chat_id) and not is_admin2(sender) then
           return send_large_msg(receiver, "شما اجازه ی مسدود کردن مدیران را ندارید")
         end
         send_large_msg(receiver, 'کاربر @'..member..' ['..member_id..'] مسدود شد')
         return ban_user(member_id, chat_id)
-      elseif get_cmd == 'صلب مسدود' then
+      elseif get_cmd == 'unban' then
         send_large_msg(receiver, 'کاربر @'..member..' ['..member_id..'] صلب مسدودیت شد')
         local hash =  'بن شد:'..chat_id
         redis:srem(hash, member_id)
         return 'کاربر '..user_id..' آنبن شد'
-      elseif get_cmd == 'مسدود از همه' then
+      elseif get_cmd == 'banall' then
         send_large_msg(receiver, 'کاربر @'..member..' ['..member_id..'] از همه ی گروه ها مسدود شد ')
         return banall_user(member_id, chat_id)
-      elseif get_cmd == 'مسدود از همه' then
+      elseif get_cmd == 'unbanall' then
         send_large_msg(receiver, 'کاربر @'..member..' ['..member_id..'] از همه ی گروه ها مسدود شد ')
         return unbanall_user(member_id, chat_id)
       end
@@ -180,7 +180,7 @@ local function run(msg, matches)
       else
 		local cbres_extra = {
 		chat_id = msg.to.id,
-		get_cmd = 'مسدود',
+		get_cmd = 'ban',
 		from_id = msg.from.id
 		}
 		local username = matches[2]
@@ -207,7 +207,7 @@ local function run(msg, matches)
       else
 		local cbres_extra = {
 			chat_id = msg.to.id,
-			get_cmd = 'صلب مسدود',
+			get_cmd = 'unban',
 			from_id = msg.from.id
 		}
 		local username = matches[2]
@@ -243,7 +243,7 @@ if matches[1]:lower() == 'اخراج' then
 	else
 		local cbres_extra = {
 			chat_id = msg.to.id,
-			get_cmd = 'اخراج',
+			get_cmd = 'kick',
 			from_id = msg.from.id
 		}
 		local username = matches[2]
@@ -273,7 +273,7 @@ end
       else
 	local cbres_extra = {
 		chat_id = msg.to.id,
-		get_cmd = 'مسدود از همه',
+		get_cmd = 'banall',
 		from_id = msg.from.id
 	}
 		local username = matches[2]
@@ -293,7 +293,7 @@ end
       else
 	local cbres_extra = {
 		chat_id = msg.to.id,
-		get_cmd = 'صلب مسدود از همه',
+		get_cmd = 'unbanall',
 		from_id = msg.from.id
 	}
 		local username = matches[2]
