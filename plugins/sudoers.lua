@@ -123,7 +123,7 @@ local function run(msg,matches)
     	redis:set("bot:photo", "waiting")
     	return 'لطفا عکس جدید را ارسال کنید'
     end
-    if matches[1] == "markread" then
+    if matches[1] == "خواندن" then
     	if matches[2] == "روشن" then
     		redis:set("bot:markread", "on")
     		return "پیام ها خوانده میشوند"
