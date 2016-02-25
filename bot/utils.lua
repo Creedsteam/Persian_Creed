@@ -90,7 +90,7 @@ end
 -- will get the text after the last "/" for filename
 -- and content-type for extension
 function download_to_file(url, file_name)
-  print("url to download: "..url)
+  print("لینکی برای دانلود: "..url)
 
   local respbody = {}
   local options = {
@@ -118,7 +118,7 @@ function download_to_file(url, file_name)
   file_name = file_name or get_http_file_name(url, headers)
 
   local file_path = "/tmp/"..file_name
-  print("Saved to: "..file_path)
+  print("ذخیره شد به: "..file_path)
 
   file = io.open(file_path, "w+")
   file:write(table.concat(respbody))
@@ -253,10 +253,10 @@ function send_photo_from_url(receiver, url, cb_function, cb_extra)
 
   local file_path = download_to_file(url, false)
   if not file_path then -- Error
-    local text = 'Error downloading the image'
+    local text = 'خطایی در دانلود کردن عکس رخ داده است'
     send_msg(receiver, text, cb_function, cb_extra)
   else
-    print("File path: "..file_path)
+    print("پتچ فایل: "..file_path)
     _send_photo(receiver, file_path, cb_function, cb_extra)
   end
 end
@@ -268,10 +268,10 @@ function send_photo_from_url_callback(cb_extra, success, result)
 
   local file_path = download_to_file(url, false)
   if not file_path then -- Error
-    local text = 'Error downloading the image'
+    local text = 'خطایی در دانلود کردن عکس رخ داده است'
     send_msg(receiver, text, ok_cb, false)
   else
-    print("File path: "..file_path)
+    print("پتچ فایل: "..file_path)
     _send_photo(receiver, file_path, ok_cb, false)
   end
 end
@@ -298,7 +298,7 @@ function send_photos_from_url_callback(cb_extra, success, result)
   -- The previously image to remove
   if remove_path ~= nil then
     os.remove(remove_path)
-    print("Deleted: "..remove_path)
+    print("حذف کرد پتچ: "..remove_path)
   end
 
   -- Nil or empty, exit case (no more urls)
@@ -328,7 +328,7 @@ function rmtmp_cb(cb_extra, success, result)
 
   if file_path ~= nil then
     os.remove(file_path)
-    print("Deleted: "..file_path)
+    print("حذف کرد پتچ: "..file_path)
   end
   -- Finally call the callback
   cb_function(cb_extra, success, result)
@@ -350,7 +350,7 @@ end
 -- cb_function and cb_extra are optionals callback
 function send_document_from_url(receiver, url, cb_function, cb_extra)
   local file_path = download_to_file(url, false)
-  print("File path: "..file_path)
+  print("پتچ فایل: "..file_path)
   _send_document(receiver, file_path, cb_function, cb_extra)
 end
 
@@ -377,7 +377,7 @@ end
 -- Returns true if user was warned and false if not warned (is allowed)
 function warns_user_not_allowed(plugin, msg)
   if not user_allowed(plugin, msg) then
-    local text = 'This plugin requires privileged user'
+    local text = 'این پلاگین مخصوص سودو هست'
     local receiver = get_receiver(msg)
     send_msg(receiver, text, ok_cb, false)
     return true
@@ -409,7 +409,7 @@ function send_order_msg_callback(cb_extra, success, result)
    local file_path = cb_extra.file_path
    if file_path ~= nil then
       os.remove(file_path)
-      print("Deleted: " .. file_path)
+      print("حذف شد: " .. file_path)
    end
    if type(msgs) == 'string' then
       send_large_msg(destination, msgs)
@@ -808,7 +808,7 @@ end
 function ban_list(chat_id)
   local hash =  'banned:'..chat_id
   local list = redis:smembers(hash)
-  local text = "Ban list !\n\n"
+  local text = "لیست مسدود شده ها\n\n"
   for k,v in pairs(list) do
     text = text..k.." - "..v.." \n"
   end
@@ -819,7 +819,7 @@ end
 function banall_list() 
   local hash =  'gbanned'
   local list = redis:smembers(hash)
-  local text = "global bans !\n\n"
+  local text = "لیست مسدود شدگان از همه ی گروه ها\n\n"
   for k,v in pairs(list) do
     text = text..k.." - "..v.." \n"
   end
@@ -832,7 +832,7 @@ function get_message_callback_id(extra, success, result)
         local chat = 'chat#id'..result.to.id
         send_large_msg(chat, result.from.id)
     else
-        return 'Use This in Your Groups'
+        return 'از این دستور در گروهتان استفاده کنید'
     end
 end
 
@@ -841,14 +841,14 @@ function Kick_by_reply(extra, success, result)
   if result.to.type == 'chat' then
     local chat = 'chat#id'..result.to.id
     if tonumber(result.from.id) == tonumber(our_id) then -- Ignore bot
-      return "I won't kick myself"
+      return "من خودم را اخراج نمیکنم"
     end
     if is_momod2(result.from.id, result.to.id) then -- Ignore mods,owner,admin
-      return "you can't kick mods,owner and admins"
+      return "شما نمیتوانید مدیران ,ادمین ها و سازنده رو اخراج کنید"
     end
     chat_del_user(chat, 'user#id'..result.from.id, ok_cb, false)
   else
-    return 'Use This in Your Groups'
+    return 'از این دستور در گروهتان استفاده کنید'
   end
 end
 
@@ -857,14 +857,14 @@ function Kick_by_reply_admins(extra, success, result)
   if result.to.type == 'chat' then
     local chat = 'chat#id'..result.to.id
     if tonumber(result.from.id) == tonumber(our_id) then -- Ignore bot
-      return "I won't kick myself"
+      return "من خودم را اخراج نمیکنم"
     end
     if is_admin2(result.from.id) then -- Ignore admins
       return
     end
     chat_del_user(chat, 'user#id'..result.from.id, ok_cb, false)
   else
-    return 'Use This in Your Groups'
+    return 'از این دستور در گروهتان استفاده کنید'
   end
 end
 
@@ -873,15 +873,15 @@ function ban_by_reply(extra, success, result)
   if result.to.type == 'chat' then
   local chat = 'chat#id'..result.to.id
   if tonumber(result.from.id) == tonumber(our_id) then -- Ignore bot
-      return "I won't ban myself"
+      return "من خودم را مسدود نمیکنم"
   end
   if is_momod2(result.from.id, result.to.id) then -- Ignore mods,owner,admin
-    return "you can't kick mods,owner and admins"
+    return "شما نمیتوانید مدیران ,ادمین ها و سازنده رو اخراج کنید"
   end
   ban_user(result.from.id, result.to.id)
-  send_large_msg(chat, "User "..result.from.id.." Banned")
+  send_large_msg(chat, "کاربر "..result.from.id.." مسدود شد")
   else
-    return 'Use This in Your Groups'
+    return 'از این دستور در گروهتان استفاده کنید'
   end
 end
 
@@ -890,15 +890,15 @@ function ban_by_reply_admins(extra, success, result)
   if result.to.type == 'chat' then
     local chat = 'chat#id'..result.to.id
     if tonumber(result.from.id) == tonumber(our_id) then -- Ignore bot
-      return "I won't ban myself"
+      return "من خودم را مسدود نمیکنم"
     end
     if is_admin2(result.from.id) then -- Ignore admins
       return
     end
     ban_user(result.from.id, result.to.id)
-    send_large_msg(chat, "User "..result.from.id.." Banned")
+    send_large_msg(chat, "کاربر "..result.from.id.." مسدود شد")
   else
-    return 'Use This in Your Groups'
+    return 'از این دستور در گروهتان استفاده کنید'
   end
 end
 
@@ -907,21 +907,21 @@ function unban_by_reply(extra, success, result)
   if result.to.type == 'chat' then
     local chat = 'chat#id'..result.to.id
     if tonumber(result.from.id) == tonumber(our_id) then -- Ignore bot
-      return "I won't unban myself"
+      return "من خودم را اس مسدودیت حذف نمیکنم"
     end
-    send_large_msg(chat, "User "..result.from.id.." Unbanned")
+    send_large_msg(chat, "کاربره "..result.from.id.." از مسدود خارج شد")
     -- Save on redis
     local hash =  'banned:'..result.to.id
     redis:srem(hash, result.from.id)
   else
-    return 'Use This in Your Groups'
+    return 'از این دستور در گروهتان استفاده کنید'
   end
 end
 function banall_by_reply(extra, success, result)
   if result.to.type == 'chat' then
     local chat = 'chat#id'..result.to.id
     if tonumber(result.from.id) == tonumber(our_id) then -- Ignore bot
-      return "I won't banall myself"
+      return "من خودم را از همه ی گروه ها مسدود نمیکنم"
     end
     if is_admin2(result.from.id) then -- Ignore admins
       return 
@@ -929,8 +929,8 @@ function banall_by_reply(extra, success, result)
     local name = user_print_name(result.from)
     banall_user(result.from.id)
     chat_del_user(chat, 'user#id'..result.from.id, ok_cb, false)
-    send_large_msg(chat, "User "..name.."["..result.from.id.."] hammered")
+    send_large_msg(chat, "کاربره "..name.."["..result.from.id.."] از همه ی گروه ها مسدود شد")
   else
-    return 'Use This in Your Groups'
+    return 'از این دستور در گروهتان استفاده کنید'
   end
 end
