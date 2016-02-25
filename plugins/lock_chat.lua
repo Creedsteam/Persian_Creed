@@ -12,9 +12,9 @@ local function run(msg, matches)
       if antichat[msg.from.id] == true then 
         return
       end
-      send_large_msg("chat#id".. msg.to.id , "chat is not allowed here")
+      send_large_msg("chat#id".. msg.to.id , "چت کردن در گروه غیر مجاز است بنابر این اخراج میشوید")
       local name = user_print_name(msg.from)
-      savelog(msg.to.id, name.." ["..msg.from.id.."] kicked (chat was locked) ")
+      savelog(msg.to.id, name.." ["..msg.from.id.."] به دلیل چت کردن اخراج شد ")
       chat_del_user('chat#id'..msg.to.id,'user#id'..msg.from.id,ok_cb,false)
 		  antichat[msg.from.id] = true
       return
