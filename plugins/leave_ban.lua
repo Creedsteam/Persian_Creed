@@ -20,12 +20,7 @@ local function run(msg, matches)
 
 return {
   patterns = {
-"[Hh][Tt][Tt][Pp][Ss]://[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]/[Jj][Oo][Ii][Nn][Cc][Hh][Aa][Tt]/",
-"[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]/[Jj][Oo][Ii][Nn][Cc][Hh][Aa][Tt]/",
-".[Ii][Rr]",
-".[Cc][Oo][Mm]",
-"[Hh][Tt][Tt][Pp]://",
-"[Ww][Ww][Ww]:",
+"^!!tgservice (chat_del_user)$"
 
   },
   run = run
