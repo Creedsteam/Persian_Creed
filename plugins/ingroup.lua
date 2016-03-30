@@ -192,7 +192,7 @@ local function show_group_settingsmod(msg, data, target)
                 NUM_MSG_MAX = tonumber(data[tostring(msg.to.id)]['settings']['flood_msg_max'])
                 print('custom'..NUM_MSG_MAX)
         else
-                NUM_MSG_MAX = 0
+                NUM_MSG_MAX = 5
         end
     end
 
